@@ -1,0 +1,21 @@
+<h1> <%= @question.title %> </h1>
+<h5> created at: <%= @question.created_at %> </h5>
+<h5> updated at: <%= @question.updated_at %> </h5>
+
+<p>
+  <%= @question.description %>
+</p>
+
+<%= button_to 'edit', edit_question_path(@question), :method => :get %>
+<%= button_to 'delete', question_path(@question), :method => :delete %>
+
+<h4>Answers:</h4>
+
+<% unless @answers.nil? %>
+<ul>  <% @answers.each do |answer| %>
+  <li> <%= answer.description %> </li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= render 'answers/form' %>
